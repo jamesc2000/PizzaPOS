@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Final Project
+Create a simple POS using Java GUI
+
+Group 1
+Cruz, James Laurence A.
+Dela Cruz, Rica V.
+Lenizo, Jackilyn O.
+Paz, Kristel Erica D.
+Sacayanan, Christian John P.
+
+BS CpE 2-3 - Software Design
  */
 
 package GUIPOS;
