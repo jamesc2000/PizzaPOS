@@ -122,15 +122,20 @@ public class POS extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 980, 100);
+        jPanel1.setBounds(0, 0, 980, 95);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("PIZZA");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(30, 135, 57, 17);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Peperoni", "Hawaiian", "4 Cheese" }));
         jComboBox1.setPreferredSize(new java.awt.Dimension(58, 25));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(30, 158, 158, 25);
 
@@ -163,10 +168,15 @@ public class POS extends javax.swing.JFrame {
 
         jButton1.setText("Add Order");
         jButton1.setPreferredSize(new java.awt.Dimension(85, 25));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(539, 159, 85, 25);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Regular", "Large", "Party" }));
         jComboBox2.setPreferredSize(new java.awt.Dimension(58, 25));
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(194, 158, 158, 25);
@@ -176,7 +186,7 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(30, 201, 80, 17);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chicken Bucket" }));
         jComboBox3.setPreferredSize(new java.awt.Dimension(58, 25));
         getContentPane().add(jComboBox3);
         jComboBox3.setBounds(30, 224, 158, 25);
@@ -186,9 +196,9 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(194, 201, 57, 17);
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large" }));
         getContentPane().add(jComboBox4);
-        jComboBox4.setBounds(194, 225, 158, 22);
+        jComboBox4.setBounds(194, 225, 158, 26);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("QTY");
@@ -222,7 +232,7 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(jLabel12);
         jLabel12.setBounds(30, 272, 57, 17);
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Spaghetti", "Carbonara" }));
         jComboBox5.setPreferredSize(new java.awt.Dimension(58, 25));
         getContentPane().add(jComboBox5);
         jComboBox5.setBounds(30, 295, 158, 25);
@@ -232,9 +242,9 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(jLabel13);
         jLabel13.setBounds(194, 275, 57, 17);
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solo", "Pan" }));
         getContentPane().add(jComboBox6);
-        jComboBox6.setBounds(194, 298, 158, 22);
+        jComboBox6.setBounds(194, 298, 158, 26);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setText("QTY");
@@ -268,7 +278,7 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(jLabel17);
         jLabel17.setBounds(30, 338, 122, 17);
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pepsi", "Coke", "Sprite", "Royal", "Root Beer" }));
         jComboBox7.setPreferredSize(new java.awt.Dimension(58, 25));
         getContentPane().add(jComboBox7);
         jComboBox7.setBounds(30, 361, 158, 25);
@@ -278,9 +288,9 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(jLabel18);
         jLabel18.setBounds(194, 340, 57, 17);
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tin Can", "Pitcher" }));
         getContentPane().add(jComboBox8);
-        jComboBox8.setBounds(194, 363, 158, 22);
+        jComboBox8.setBounds(194, 363, 158, 26);
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel19.setText("QTY");
@@ -397,7 +407,7 @@ public class POS extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(660, 140, 287, 425);
+        jPanel2.setBounds(660, 140, 279, 415);
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel29.setText("RECEIPT");
@@ -408,6 +418,14 @@ public class POS extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String[] args) {
         System.out.print("Starting PizzaPOS...");

@@ -443,7 +443,7 @@ class Beverage extends Menu{
                     this.price = 49;
                     break;
                 case "P"://pitcher
-                    this.size = "Tin Can";
+                    this.size = "Pitcher";
                     this.price = 99;
                     break;
                 default:
