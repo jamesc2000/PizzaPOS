@@ -349,15 +349,15 @@ class Pizza extends Menu{
     public Pizza(String t_size, String t_flavor){
         if (null != t_size) {
             switch (t_size) {
-            case "R"://regular
+            case "Regular"://regular
                 this.setPrice(349);
                 this.size = "Regular";
                 break;
-            case "L"://large
+            case "Large"://large
                 this.setPrice(599);
                 this.size = "Large";
                 break;
-            case "P"://party
+            case "Party"://party
                 this.setPrice(799);
                 this.size = "Party";
                 break;
@@ -366,19 +366,7 @@ class Pizza extends Menu{
             }
         }
         if (null != t_flavor) {
-            switch (t_flavor) {
-            case "P":
-                this.flavor = "Pepperoni";
-                break;
-            case "H":
-                this.flavor = "Hawaiian";
-                break;
-            case "4":
-                this.flavor = "4 Cheese";
-                break;
-            default:
-                System.out.println("Invalid option.");
-            }
+            this.flavor = t_flavor;
         }
         this.name = this.flavor + " " + this.size;
     }
@@ -397,11 +385,11 @@ class Pasta extends Menu{
     public Pasta (String t_serving, String t_typeofPasta){
         if (null != t_serving) {
             switch (t_serving) {
-              case "S": //solo
+              case "Solo": //solo
                     this.price = 99;
                     this.serving = "Solo";
                     break;
-              case "P": //pan
+              case "Pan": //pan
                     this.price = 249;
                     this.serving = "Pan";
                     break;
@@ -410,16 +398,7 @@ class Pasta extends Menu{
             }
         }
         if (null != t_typeofPasta) {
-            switch (t_typeofPasta) {
-                case "S":
-                    this.typeofPasta = "Spaghetti";
-                    break;
-                case "C":
-                    this.typeofPasta = "Carbonara";
-                    break;
-                default:
-                    System.out.println("Invalid option.");
-            }
+            this.typeofPasta = t_typeofPasta;
         }
         this.name = this.serving + " " + this.typeofPasta;
     } 
@@ -438,12 +417,12 @@ class Beverage extends Menu{
     public Beverage(String t_size, String t_drink){
         if (null != t_size) {
             switch (t_size) {
-                case "T": //tin can
-                    this.size = "Tin Can";
+                case "16 Oz":
+                    this.size = "16 Oz";
                     this.price = 49;
                     break;
-                case "P"://pitcher
-                    this.size = "Pitcher";
+                case "1.5 Liter":
+                    this.size = "1.5 Liter";
                     this.price = 99;
                     break;
                 default:
@@ -451,25 +430,7 @@ class Beverage extends Menu{
             }
         }
         if (null != t_drink) {
-            switch (t_drink) {
-                case "P":
-                    this.drink = "Pepsi";
-                    break;
-                case "C":
-                   this.drink = "Coke";
-                   break;
-                case "S":
-                   this.drink = "Sprite";
-                   break;
-                case "Ro":
-                   this.drink = "Royal";
-                   break;
-                case "Rb":
-                 this.drink = "Root Beer";
-                   break;
-                default:
-                    System.out.println("Invalid option.");
-            }
+            this.drink = t_drink;
         }
         this.name = this.size + " " + this.drink;
     } 
@@ -479,23 +440,24 @@ class Beverage extends Menu{
 // subclass of Menu
 class Chicken extends Menu {
     public String size;
-    
+    public String flavor;
+        
     public Chicken(){
         super();
     }
     
-    public Chicken(String t_size){
+    public Chicken(String t_size, String t_flavor){
         if (null != t_size) {
             switch (t_size) {
-            case "S":
+            case "Small Bucket":
                 this.size = "Small Bucket";
                 this.price = 299;
                 break;
-            case "M":
+            case "Medium Bucket":
                 this.size = "Medium Bucket";
                 this.price = 549;
                 break;
-            case "L":
+            case "Large Bucket":
                 this.size = "Large Bucket";
                 this.price = 799;
                 break;
@@ -503,6 +465,9 @@ class Chicken extends Menu {
                 System.out.println("Invalid option.");
             }
         }
-        this.name = this.size + " Chicken";
+        
+        this.flavor = t_flavor;
+        
+        this.name = this.flavor + " " + this.size + " Chicken";
     }
 }

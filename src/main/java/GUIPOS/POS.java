@@ -71,32 +71,24 @@ public class POS extends javax.swing.JFrame {
         lblPizza = new javax.swing.JLabel();
         lblPizzaSize = new javax.swing.JLabel();
         lblPizzaQty = new javax.swing.JLabel();
-        txtPizzaQty = new javax.swing.JTextField();
         lblPizzaamt = new javax.swing.JLabel();
         btnPizzaAO = new javax.swing.JButton();
         cboPizzaSize = new javax.swing.JComboBox<>();
         lblChicken = new javax.swing.JLabel();
         cboChicken = new javax.swing.JComboBox<>();
         lblChickenSize = new javax.swing.JLabel();
-        cboChickenSize = new javax.swing.JComboBox<>();
         lblChickenQty = new javax.swing.JLabel();
-        txtChickenSize = new javax.swing.JTextField();
         lblChickenamt = new javax.swing.JLabel();
         btnChickenAO = new javax.swing.JButton();
         lblPasta = new javax.swing.JLabel();
-        cboPasta = new javax.swing.JComboBox<>();
         lblPastaSize = new javax.swing.JLabel();
-        cboPastaSize = new javax.swing.JComboBox<>();
         lblPastaQty = new javax.swing.JLabel();
-        txtPastaSize = new javax.swing.JTextField();
         lblPastaamt = new javax.swing.JLabel();
         btnPastaAO = new javax.swing.JButton();
         lblDrinks = new javax.swing.JLabel();
-        cboDrinks = new javax.swing.JComboBox<>();
         lblDrinksSize = new javax.swing.JLabel();
         cboDrinksSize = new javax.swing.JComboBox<>();
         lblDrinksQty = new javax.swing.JLabel();
-        txtDrinksSize = new javax.swing.JTextField();
         lblDrinksamt = new javax.swing.JLabel();
         btnDrinksAO = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -119,6 +111,14 @@ public class POS extends javax.swing.JFrame {
         lblPastaAMT = new javax.swing.JLabel();
         lblDrinksAMT = new javax.swing.JLabel();
         btnNewOrder = new javax.swing.JButton();
+        spnPizzaQty = new javax.swing.JSpinner();
+        spnChickenQty = new javax.swing.JSpinner();
+        spnPastaQty = new javax.swing.JSpinner();
+        spnDrinksQty = new javax.swing.JSpinner();
+        cboChickenSize = new javax.swing.JComboBox<>();
+        cboPastaSize = new javax.swing.JComboBox<>();
+        cboPasta = new javax.swing.JComboBox<>();
+        cboDrinks = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -206,11 +206,6 @@ public class POS extends javax.swing.JFrame {
 
         cboPizza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Pizza", "Pepperoni", "Hawaiian", "Four Cheese", "Garlic Shrimp" }));
         cboPizza.setPreferredSize(new java.awt.Dimension(58, 25));
-        cboPizza.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboPizzaActionPerformed(evt);
-            }
-        });
         getContentPane().add(cboPizza);
         cboPizza.setBounds(30, 158, 158, 25);
 
@@ -235,12 +230,6 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(lblPizzaQty);
         lblPizzaQty.setBounds(362, 135, 57, 17);
 
-        txtPizzaQty.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPizzaQty.setText("00");
-        txtPizzaQty.setPreferredSize(new java.awt.Dimension(20, 25));
-        getContentPane().add(txtPizzaQty);
-        txtPizzaQty.setBounds(362, 158, 72, 25);
-
         lblPizzaamt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPizzaamt.setForeground(new java.awt.Color(204, 51, 0));
         lblPizzaamt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -254,6 +243,11 @@ public class POS extends javax.swing.JFrame {
         btnPizzaAO.setForeground(new java.awt.Color(243, 198, 129));
         btnPizzaAO.setText("Add Order");
         btnPizzaAO.setPreferredSize(new java.awt.Dimension(85, 25));
+        btnPizzaAO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPizzaAOActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPizzaAO);
         btnPizzaAO.setBounds(539, 159, 90, 25);
 
@@ -271,11 +265,6 @@ public class POS extends javax.swing.JFrame {
 
         cboChicken.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Chicken", "Original", "Spicy" }));
         cboChicken.setPreferredSize(new java.awt.Dimension(58, 25));
-        cboChicken.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboChickenActionPerformed(evt);
-            }
-        });
         getContentPane().add(cboChicken);
         cboChicken.setBounds(30, 224, 158, 25);
 
@@ -286,27 +275,12 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(lblChickenSize);
         lblChickenSize.setBounds(194, 201, 57, 17);
 
-        cboChickenSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "Small Bucket", "Medium Bucket", "Large Bucket" }));
-        getContentPane().add(cboChickenSize);
-        cboChickenSize.setBounds(194, 225, 158, 20);
-
         lblChickenQty.setBackground(new java.awt.Color(182, 31, 5));
         lblChickenQty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblChickenQty.setForeground(new java.awt.Color(182, 31, 5));
         lblChickenQty.setText("QTY");
         getContentPane().add(lblChickenQty);
         lblChickenQty.setBounds(362, 201, 57, 17);
-
-        txtChickenSize.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtChickenSize.setText("00");
-        txtChickenSize.setPreferredSize(new java.awt.Dimension(20, 25));
-        txtChickenSize.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChickenSizeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtChickenSize);
-        txtChickenSize.setBounds(362, 224, 72, 25);
 
         lblChickenamt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblChickenamt.setForeground(new java.awt.Color(204, 51, 0));
@@ -321,6 +295,11 @@ public class POS extends javax.swing.JFrame {
         btnChickenAO.setForeground(new java.awt.Color(243, 198, 129));
         btnChickenAO.setText("Add Order");
         btnChickenAO.setPreferredSize(new java.awt.Dimension(85, 25));
+        btnChickenAO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChickenAOActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnChickenAO);
         btnChickenAO.setBounds(539, 225, 90, 25);
 
@@ -331,11 +310,6 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(lblPasta);
         lblPasta.setBounds(30, 272, 57, 17);
 
-        cboPasta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Pasta", "Spaghetti", "Carbonara" }));
-        cboPasta.setPreferredSize(new java.awt.Dimension(58, 25));
-        getContentPane().add(cboPasta);
-        cboPasta.setBounds(30, 295, 158, 25);
-
         lblPastaSize.setBackground(new java.awt.Color(182, 21, 5));
         lblPastaSize.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblPastaSize.setForeground(new java.awt.Color(182, 21, 5));
@@ -343,22 +317,12 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(lblPastaSize);
         lblPastaSize.setBounds(194, 275, 57, 17);
 
-        cboPastaSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "Solo", "Pan" }));
-        getContentPane().add(cboPastaSize);
-        cboPastaSize.setBounds(194, 298, 158, 20);
-
         lblPastaQty.setBackground(new java.awt.Color(182, 31, 5));
         lblPastaQty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblPastaQty.setForeground(new java.awt.Color(182, 31, 5));
         lblPastaQty.setText("QTY");
         getContentPane().add(lblPastaQty);
         lblPastaQty.setBounds(362, 275, 57, 17);
-
-        txtPastaSize.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPastaSize.setText("00");
-        txtPastaSize.setPreferredSize(new java.awt.Dimension(20, 25));
-        getContentPane().add(txtPastaSize);
-        txtPastaSize.setBounds(362, 298, 72, 25);
 
         lblPastaamt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPastaamt.setForeground(new java.awt.Color(204, 51, 0));
@@ -373,6 +337,11 @@ public class POS extends javax.swing.JFrame {
         btnPastaAO.setForeground(new java.awt.Color(243, 198, 129));
         btnPastaAO.setText("Add Order");
         btnPastaAO.setPreferredSize(new java.awt.Dimension(85, 25));
+        btnPastaAO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPastaAOActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPastaAO);
         btnPastaAO.setBounds(539, 299, 90, 25);
 
@@ -383,11 +352,6 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(lblDrinks);
         lblDrinks.setBounds(30, 338, 122, 17);
 
-        cboDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Drinks", "Pepsi", "Coke", "Sprite", "Royal" }));
-        cboDrinks.setPreferredSize(new java.awt.Dimension(58, 25));
-        getContentPane().add(cboDrinks);
-        cboDrinks.setBounds(30, 361, 158, 25);
-
         lblDrinksSize.setBackground(new java.awt.Color(182, 21, 5));
         lblDrinksSize.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblDrinksSize.setForeground(new java.awt.Color(182, 21, 5));
@@ -397,7 +361,7 @@ public class POS extends javax.swing.JFrame {
 
         cboDrinksSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "16 Oz", "1.5 Liter" }));
         getContentPane().add(cboDrinksSize);
-        cboDrinksSize.setBounds(194, 363, 158, 20);
+        cboDrinksSize.setBounds(194, 363, 158, 26);
 
         lblDrinksQty.setBackground(new java.awt.Color(182, 31, 5));
         lblDrinksQty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -405,12 +369,6 @@ public class POS extends javax.swing.JFrame {
         lblDrinksQty.setText("QTY");
         getContentPane().add(lblDrinksQty);
         lblDrinksQty.setBounds(362, 338, 57, 17);
-
-        txtDrinksSize.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDrinksSize.setText("00");
-        txtDrinksSize.setPreferredSize(new java.awt.Dimension(20, 25));
-        getContentPane().add(txtDrinksSize);
-        txtDrinksSize.setBounds(362, 361, 72, 25);
 
         lblDrinksamt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblDrinksamt.setForeground(new java.awt.Color(204, 51, 0));
@@ -467,7 +425,7 @@ public class POS extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(660, 155, 287, 380);
+        jPanel2.setBounds(660, 155, 279, 380);
 
         jPanel4.setBackground(new java.awt.Color(243, 198, 129));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -501,11 +459,6 @@ public class POS extends javax.swing.JFrame {
         txtEPayment.setText("00");
         txtEPayment.setCaretColor(new java.awt.Color(255, 255, 255));
         txtEPayment.setPreferredSize(new java.awt.Dimension(20, 25));
-        txtEPayment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEPaymentActionPerformed(evt);
-            }
-        });
 
         lblEPAYMENT.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblEPAYMENT.setForeground(new java.awt.Color(204, 51, 0));
@@ -540,11 +493,6 @@ public class POS extends javax.swing.JFrame {
         btnPrintReceipt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnPrintReceipt.setForeground(new java.awt.Color(255, 255, 255));
         btnPrintReceipt.setText("PRINT RECEIPT");
-        btnPrintReceipt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintReceiptActionPerformed(evt);
-            }
-        });
 
         lblReceipt.setBackground(new java.awt.Color(182, 21, 5));
         lblReceipt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -575,30 +523,57 @@ public class POS extends javax.swing.JFrame {
         btnNewOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnNewOrder.setText("NEW ORDER");
 
+        cboChickenSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "Small Bucket", "Medium Bucket", "Large Bucket" }));
+
+        cboPastaSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "Solo", "Pan" }));
+
+        cboPasta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Pasta", "Spaghetti", "Carbonara" }));
+        cboPasta.setPreferredSize(new java.awt.Dimension(58, 25));
+
+        cboDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Drinks", "Pepsi", "Coke", "Sprite", "Royal" }));
+        cboDrinks.setPreferredSize(new java.awt.Dimension(58, 25));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblSUBTOTAL)
-                            .addComponent(lblVAT))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblsubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(lbltotal, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(lblvat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblEPAYMENT)
-                    .addComponent(lblCHANGE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblSUBTOTAL)
+                                    .addComponent(lblVAT))
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblTOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblsubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(lbltotal, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(lblvat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblEPAYMENT)
+                            .addComponent(lblCHANGE)))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cboDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cboChickenSize, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(cboPasta, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cboPastaSize, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(spnDrinksQty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                                .addComponent(spnPastaQty, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(spnChickenQty, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(spnPizzaQty, javax.swing.GroupLayout.Alignment.TRAILING)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -620,13 +595,13 @@ public class POS extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblchange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblchange, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
                         .addGap(358, 358, 358))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(lblPizzaAMT)
@@ -642,7 +617,22 @@ public class POS extends javax.swing.JFrame {
                         .addGap(401, 401, 401)
                         .addComponent(btnNewOrder))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(58, 58, 58)
+                        .addComponent(spnPizzaQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spnChickenQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboChickenSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spnPastaQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboPastaSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboPasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spnDrinksQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEPAYMENT)
@@ -666,48 +656,69 @@ public class POS extends javax.swing.JFrame {
                                     .addComponent(lbltotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(13, 13, 13)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4);
         jPanel4.setBounds(0, 100, 980, 500);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDrinksAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrinksAOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDrinksAOActionPerformed
-
-    private void cboPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPizzaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboPizzaActionPerformed
-
-    private void txtEPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEPaymentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEPaymentActionPerformed
-
-    private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrintReceiptActionPerformed
-
-    private void txtChickenSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChickenSizeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtChickenSizeActionPerformed
-
-    private void cboChickenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboChickenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboChickenActionPerformed
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+    
+    private Purchase purchase = new Purchase(1); // TODO: Find a better way to handle this
+    
+    private void btnPizzaAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPizzaAOActionPerformed
+        String flavor = (String)cboPizza.getSelectedItem();
+        String size = (String)cboPizzaSize.getSelectedItem();
+        int qty = (int)spnPizzaQty.getValue();
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Pizza pizzaOrder = new Pizza(size, flavor);
+        for (int i = 0; i < qty; i++) {
+            purchase.addOrder(pizzaOrder);
+        }
+        purchase.listOrders();
+    }//GEN-LAST:event_btnPizzaAOActionPerformed
+
+    private void btnChickenAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChickenAOActionPerformed
+        String flavor = (String)cboChicken.getSelectedItem();
+        String size = (String)cboChickenSize.getSelectedItem();
+        int qty = (int)spnChickenQty.getValue();
+
+        Chicken chickenOrder = new Chicken(size, flavor);
+        for (int i = 0; i < qty; i++) {
+            purchase.addOrder(chickenOrder);
+        }
+        purchase.listOrders();
+    }//GEN-LAST:event_btnChickenAOActionPerformed
+
+    private void btnPastaAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPastaAOActionPerformed
+        String typeofPasta = (String)cboPasta.getSelectedItem();
+        String serving = (String)cboPastaSize.getSelectedItem();
+        int qty = (int)spnPastaQty.getValue();
+
+        Pasta pastaOrder = new Pasta(serving, typeofPasta);
+        for (int i = 0; i < qty; i++) {
+            purchase.addOrder(pastaOrder);
+        }
+        purchase.listOrders();
+    }//GEN-LAST:event_btnPastaAOActionPerformed
+
+    private void btnDrinksAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrinksAOActionPerformed
+        String drink = (String)cboDrinks.getSelectedItem();
+        String size = (String)cboDrinksSize.getSelectedItem();
+        int qty = (int)spnDrinksQty.getValue();
+
+        Beverage drinkOrder = new Beverage(size, drink);
+        for (int i = 0; i < qty; i++) {
+            purchase.addOrder(drinkOrder);
+        }
+        purchase.listOrders();
+    }//GEN-LAST:event_btnDrinksAOActionPerformed
 
     public static void main(String[] args) {
         System.out.print("Starting PizzaPOS...");
-
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -793,10 +804,10 @@ public class POS extends javax.swing.JFrame {
     private javax.swing.JLabel lblsubtotal;
     private javax.swing.JLabel lbltotal;
     private javax.swing.JLabel lblvat;
-    private javax.swing.JTextField txtChickenSize;
-    private javax.swing.JTextField txtDrinksSize;
+    private javax.swing.JSpinner spnChickenQty;
+    private javax.swing.JSpinner spnDrinksQty;
+    private javax.swing.JSpinner spnPastaQty;
+    private javax.swing.JSpinner spnPizzaQty;
     private javax.swing.JTextField txtEPayment;
-    private javax.swing.JTextField txtPastaSize;
-    private javax.swing.JTextField txtPizzaQty;
     // End of variables declaration//GEN-END:variables
 }
