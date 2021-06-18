@@ -6,13 +6,13 @@
 
 package GUIPOS;
 
+// GUI Autoimports
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-/**
- *
- * @author LENIZO
- */
+// Import Menu.java to reuse old classes from prev. lab experiment
+import GUIPOS.Menu;
+
 public class POS extends javax.swing.JFrame {
 
     /**
