@@ -75,7 +75,6 @@ public class POS extends javax.swing.JFrame {
         btnPizzaAO = new javax.swing.JButton();
         cboPizzaSize = new javax.swing.JComboBox<>();
         lblChicken = new javax.swing.JLabel();
-        cboChicken = new javax.swing.JComboBox<>();
         lblChickenSize = new javax.swing.JLabel();
         lblChickenQty = new javax.swing.JLabel();
         lblChickenamt = new javax.swing.JLabel();
@@ -87,7 +86,6 @@ public class POS extends javax.swing.JFrame {
         btnPastaAO = new javax.swing.JButton();
         lblDrinks = new javax.swing.JLabel();
         lblDrinksSize = new javax.swing.JLabel();
-        cboDrinksSize = new javax.swing.JComboBox<>();
         lblDrinksQty = new javax.swing.JLabel();
         lblDrinksamt = new javax.swing.JLabel();
         btnDrinksAO = new javax.swing.JButton();
@@ -120,6 +118,8 @@ public class POS extends javax.swing.JFrame {
         cboPastaSize = new javax.swing.JComboBox<>();
         cboPasta = new javax.swing.JComboBox<>();
         cboDrinks = new javax.swing.JComboBox<>();
+        cboDrinksSize = new javax.swing.JComboBox<>();
+        cboChicken = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -264,11 +264,6 @@ public class POS extends javax.swing.JFrame {
         getContentPane().add(lblChicken);
         lblChicken.setBounds(30, 201, 80, 17);
 
-        cboChicken.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Chicken", "Original", "Spicy" }));
-        cboChicken.setPreferredSize(new java.awt.Dimension(58, 25));
-        getContentPane().add(cboChicken);
-        cboChicken.setBounds(30, 224, 158, 25);
-
         lblChickenSize.setBackground(new java.awt.Color(182, 21, 5));
         lblChickenSize.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblChickenSize.setForeground(new java.awt.Color(182, 21, 5));
@@ -359,10 +354,6 @@ public class POS extends javax.swing.JFrame {
         lblDrinksSize.setText("SIZE");
         getContentPane().add(lblDrinksSize);
         lblDrinksSize.setBounds(194, 340, 57, 17);
-
-        cboDrinksSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "16 Oz", "1.5 Liter" }));
-        getContentPane().add(cboDrinksSize);
-        cboDrinksSize.setBounds(194, 363, 158, 22);
 
         lblDrinksQty.setBackground(new java.awt.Color(182, 31, 5));
         lblDrinksQty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -530,6 +521,11 @@ public class POS extends javax.swing.JFrame {
         cboDrinks.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Drinks", "Pepsi", "Coke", "Sprite", "Royal" }));
         cboDrinks.setPreferredSize(new java.awt.Dimension(58, 25));
 
+        cboDrinksSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "16 Oz", "1.5 Liter" }));
+
+        cboChicken.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Chicken", "Original", "Spicy" }));
+        cboChicken.setPreferredSize(new java.awt.Dimension(58, 25));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -556,21 +552,27 @@ public class POS extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblEPAYMENT)
                             .addComponent(lblCHANGE)))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cboDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(cboDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cboDrinksSize, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cboChickenSize, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(cboChicken, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cboChickenSize, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(cboPasta, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cboPastaSize, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(spnDrinksQty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                .addComponent(spnPastaQty, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(spnChickenQty, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(spnPizzaQty, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                    .addComponent(cboPastaSize, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(spnDrinksQty, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(spnPastaQty, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(spnChickenQty, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(spnPizzaQty, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -618,11 +620,12 @@ public class POS extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(spnPizzaQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addGap(39, 39, 39)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spnChickenQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboChickenSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48)
+                            .addComponent(cboChickenSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboChicken, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spnPastaQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cboPastaSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -630,7 +633,8 @@ public class POS extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spnDrinksQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboDrinks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboDrinksSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
