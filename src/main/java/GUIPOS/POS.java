@@ -92,7 +92,8 @@ public class POS extends javax.swing.JFrame {
         lblDrinksamt = new javax.swing.JLabel();
         btnDrinksAO = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txaReceipt = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         lblvat = new javax.swing.JLabel();
         lblVAT = new javax.swing.JLabel();
@@ -361,7 +362,7 @@ public class POS extends javax.swing.JFrame {
 
         cboDrinksSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "16 Oz", "1.5 Liter" }));
         getContentPane().add(cboDrinksSize);
-        cboDrinksSize.setBounds(194, 363, 158, 26);
+        cboDrinksSize.setBounds(194, 363, 158, 22);
 
         lblDrinksQty.setBackground(new java.awt.Color(182, 31, 5));
         lblDrinksQty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -394,38 +395,29 @@ public class POS extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(182, 21, 5));
         jPanel2.setForeground(new java.awt.Color(182, 21, 5));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 267, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 358, Short.MAX_VALUE)
-        );
+        txaReceipt.setColumns(20);
+        txaReceipt.setRows(5);
+        jScrollPane1.setViewportView(txaReceipt);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(660, 155, 279, 380);
+        jPanel2.setBounds(660, 155, 287, 380);
 
         jPanel4.setBackground(new java.awt.Color(243, 198, 129));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -493,6 +485,11 @@ public class POS extends javax.swing.JFrame {
         btnPrintReceipt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnPrintReceipt.setForeground(new java.awt.Color(255, 255, 255));
         btnPrintReceipt.setText("PRINT RECEIPT");
+        btnPrintReceipt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintReceiptActionPerformed(evt);
+            }
+        });
 
         lblReceipt.setBackground(new java.awt.Color(182, 21, 5));
         lblReceipt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -590,12 +587,14 @@ public class POS extends javax.swing.JFrame {
                                 .addGap(139, 139, 139)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNewOrder)
-                            .addComponent(lblReceipt))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(lblReceipt)
+                                .addGap(29, 29, 29)))
                         .addGap(116, 116, 116))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblchange, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                            .addComponent(lblchange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(358, 358, 358))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -656,7 +655,7 @@ public class POS extends javax.swing.JFrame {
                                     .addComponent(lbltotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(13, 13, 13)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4);
@@ -717,6 +716,22 @@ public class POS extends javax.swing.JFrame {
         purchase.listOrders();
     }//GEN-LAST:event_btnDrinksAOActionPerformed
 
+    private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
+        // TODO add your handling code here:
+        txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZERRIA\n");
+        txaReceipt.setText(txaReceipt.getText()+ "               General Luna corner Muralla St.,\n");
+        txaReceipt.setText(txaReceipt.getText()+ "                        Intamuros, Manila\n");
+        txaReceipt.setText(txaReceipt.getText()+ "                          (+63 2) 8 7000\n\n");
+        txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
+        txaReceipt.setText(txaReceipt.getText()+ "    Product" + "           Size" + "           Qty." + "           Amount\n\n" );
+        txaReceipt.setText(txaReceipt.getText()+ "\n\n\n\n\n\n\n");
+        txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
+        txaReceipt.setText(txaReceipt.getText()+ "    Total" + "           VAT" + "           Cash" + "           Change\n\n" );
+        txaReceipt.setText(txaReceipt.getText()+ "                      Thank you for Visiting\n" );
+        txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZZERIA\n" );
+        txaReceipt.setText(txaReceipt.getText()+ "                         Enjoy your Meal!" );
+    }//GEN-LAST:event_btnPrintReceiptActionPerformed
+
     public static void main(String[] args) {
         System.out.print("Starting PizzaPOS...");
         /* Set the Nimbus look and feel */
@@ -768,8 +783,8 @@ public class POS extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCHANGE;
     private javax.swing.JLabel lblChicken;
     private javax.swing.JLabel lblChickenAMT;
@@ -808,6 +823,7 @@ public class POS extends javax.swing.JFrame {
     private javax.swing.JSpinner spnDrinksQty;
     private javax.swing.JSpinner spnPastaQty;
     private javax.swing.JSpinner spnPizzaQty;
+    private javax.swing.JTextArea txaReceipt;
     private javax.swing.JTextField txtEPayment;
     // End of variables declaration//GEN-END:variables
 }
