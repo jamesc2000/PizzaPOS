@@ -121,6 +121,7 @@ public class POS extends javax.swing.JFrame {
         cboDrinks = new javax.swing.JComboBox<>();
         cboDrinksSize = new javax.swing.JComboBox<>();
         cboChicken = new javax.swing.JComboBox<>();
+        lblStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -572,6 +573,9 @@ public class POS extends javax.swing.JFrame {
         cboChicken.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Chicken", "Original", "Spicy" }));
         cboChicken.setPreferredSize(new java.awt.Dimension(58, 25));
 
+        lblStatus.setForeground(new java.awt.Color(204, 51, 0));
+        lblStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -597,7 +601,9 @@ public class POS extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblEPAYMENT)
-                            .addComponent(lblCHANGE)))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblStatus)
+                                .addComponent(lblCHANGE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -642,7 +648,7 @@ public class POS extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblchange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblchange, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
                         .addGap(358, 358, 358))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -694,7 +700,9 @@ public class POS extends javax.swing.JFrame {
                                     .addComponent(lblchange, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblCHANGE))
                                 .addGap(18, 18, 18)
-                                .addComponent(btnPrintReceipt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnPrintReceipt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -705,7 +713,7 @@ public class POS extends javax.swing.JFrame {
                                     .addComponent(lbltotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(13, 13, 13)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel4);
@@ -789,18 +797,29 @@ public class POS extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDrinksAOActionPerformed
 
     private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
-        txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZERRIA\n");
-        txaReceipt.setText(txaReceipt.getText()+ "               General Luna corner Muralla St.,\n");
-        txaReceipt.setText(txaReceipt.getText()+ "                        Intamuros, Manila\n");
-        txaReceipt.setText(txaReceipt.getText()+ "                          (+63 2) 8 7000\n\n");
-        txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
-        txaReceipt.setText(txaReceipt.getText()+ "    Product" + "           Size" + "           Qty." + "           Amount\n\n" );
-        txaReceipt.setText(txaReceipt.getText()+ "\n\n\n\n\n\n\n");
-        txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
-        txaReceipt.setText(txaReceipt.getText()+ "    Total" + "           VAT" + "           Cash" + "           Change\n\n" );
-        txaReceipt.setText(txaReceipt.getText()+ "                      Thank you for Visiting\n" );
-        txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZZERIA\n" );
-        txaReceipt.setText(txaReceipt.getText()+ "                         Enjoy your Meal!" );
+        lblStatus.setText(""); // Clear status message first
+        double customerCash = Double.parseDouble(txtEPayment.getText());
+        Payment customerPayment = new Payment("Cash", customerCash);
+        // pay method returns "Success", "Insufficient Payment", "Invalid Details", or "Unknown Error"
+        String status = purchase.pay(customerPayment);
+        if (status.equals("Success")) {
+            lblchange.setText(formatter.format(purchase.getChange()));
+            
+            txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZERRIA\n");
+            txaReceipt.setText(txaReceipt.getText()+ "               General Luna corner Muralla St.,\n");
+            txaReceipt.setText(txaReceipt.getText()+ "                        Intamuros, Manila\n");
+            txaReceipt.setText(txaReceipt.getText()+ "                          (+63 2) 8 7000\n\n");
+            txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
+            txaReceipt.setText(txaReceipt.getText()+ "    Product" + "           Size" + "           Qty." + "           Amount\n\n" );
+            txaReceipt.setText(txaReceipt.getText()+ "\n\n\n\n\n\n\n");
+            txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
+            txaReceipt.setText(txaReceipt.getText()+ "    Total" + "           VAT" + "           Cash" + "           Change\n\n" );
+            txaReceipt.setText(txaReceipt.getText()+ "                      Thank you for Visiting\n" );
+            txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZZERIA\n" );
+            txaReceipt.setText(txaReceipt.getText()+ "                         Enjoy your Meal!" );
+        } else {
+            lblStatus.setText(status);
+        }
     }//GEN-LAST:event_btnPrintReceiptActionPerformed
 
     private void calculateSubtotalColumn() {
@@ -928,6 +947,7 @@ public class POS extends javax.swing.JFrame {
     private javax.swing.JLabel lblPizzaamt;
     private javax.swing.JLabel lblReceipt;
     private javax.swing.JLabel lblSUBTOTAL;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTOTAL;
     private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblVAT;
