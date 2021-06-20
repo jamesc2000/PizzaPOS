@@ -810,10 +810,11 @@ public class POS extends javax.swing.JFrame {
             txaReceipt.setText(txaReceipt.getText()+ "                        Intamuros, Manila\n");
             txaReceipt.setText(txaReceipt.getText()+ "                          (+63 2) 8 7000\n\n");
             txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
-            txaReceipt.setText(txaReceipt.getText()+ "    Product" + "           Size" + "           Qty." + "           Amount\n\n" );
-            txaReceipt.setText(txaReceipt.getText()+ "\n\n\n\n\n\n\n");
+            txaReceipt.setText(txaReceipt.getText()+ "    Product" + "           Size" + "                          Amount\n\n" );
+            txaReceipt.setText(txaReceipt.getText()+ purchase.listOrders());
             txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
-            txaReceipt.setText(txaReceipt.getText()+ "    Total" + "           VAT" + "           Cash" + "           Change\n\n" );
+            txaReceipt.setText(txaReceipt.getText()+ "    Total" + "           VAT" + "           Cash" + "           Change\n" );
+            txaReceipt.setText(txaReceipt.getText()+ purchase.printBill());
             txaReceipt.setText(txaReceipt.getText()+ "                      Thank you for Visiting\n" );
             txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZZERIA\n" );
             txaReceipt.setText(txaReceipt.getText()+ "                         Enjoy your Meal!" );

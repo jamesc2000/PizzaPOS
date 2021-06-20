@@ -791,7 +791,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtEPayment" max="32767" attributes="0"/>
-                              <Component id="lblchange" pref="173" max="32767" attributes="0"/>
+                              <Component id="lblchange" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
                       </Group>
