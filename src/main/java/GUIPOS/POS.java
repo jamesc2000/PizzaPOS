@@ -236,7 +236,7 @@ public class POS extends javax.swing.JFrame {
         lblPizzaamt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPizzaamt.setForeground(new java.awt.Color(204, 51, 0));
         lblPizzaamt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPizzaamt.setText("00.00");
+        lblPizzaamt.setText(".00");
         lblPizzaamt.setPreferredSize(new java.awt.Dimension(29, 25));
         getContentPane().add(lblPizzaamt);
         lblPizzaamt.setBounds(444, 159, 85, 22);
@@ -256,6 +256,11 @@ public class POS extends javax.swing.JFrame {
 
         cboPizzaSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "Regular", "Large", "Party" }));
         cboPizzaSize.setPreferredSize(new java.awt.Dimension(58, 25));
+        cboPizzaSize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboPizzaSizeActionPerformed(evt);
+            }
+        });
         getContentPane().add(cboPizzaSize);
         cboPizzaSize.setBounds(194, 158, 158, 25);
 
@@ -283,7 +288,7 @@ public class POS extends javax.swing.JFrame {
         lblChickenamt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblChickenamt.setForeground(new java.awt.Color(204, 51, 0));
         lblChickenamt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblChickenamt.setText("00.00");
+        lblChickenamt.setText(".00");
         lblChickenamt.setPreferredSize(new java.awt.Dimension(29, 25));
         getContentPane().add(lblChickenamt);
         lblChickenamt.setBounds(444, 225, 85, 22);
@@ -325,7 +330,7 @@ public class POS extends javax.swing.JFrame {
         lblPastaamt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPastaamt.setForeground(new java.awt.Color(204, 51, 0));
         lblPastaamt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPastaamt.setText("00.00");
+        lblPastaamt.setText(".00");
         lblPastaamt.setPreferredSize(new java.awt.Dimension(29, 25));
         getContentPane().add(lblPastaamt);
         lblPastaamt.setBounds(444, 299, 85, 22);
@@ -367,7 +372,7 @@ public class POS extends javax.swing.JFrame {
         lblDrinksamt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblDrinksamt.setForeground(new java.awt.Color(204, 51, 0));
         lblDrinksamt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDrinksamt.setText("00.00");
+        lblDrinksamt.setText(".00");
         lblDrinksamt.setPreferredSize(new java.awt.Dimension(29, 25));
         getContentPane().add(lblDrinksamt);
         lblDrinksamt.setBounds(444, 362, 85, 22);
@@ -513,9 +518,43 @@ public class POS extends javax.swing.JFrame {
         btnNewOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnNewOrder.setText("NEW ORDER");
 
+        spnPizzaQty.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQtyStateChanged(evt);
+            }
+        });
+
+        spnChickenQty.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQtyStateChanged(evt);
+            }
+        });
+
+        spnPastaQty.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQtyStateChanged(evt);
+            }
+        });
+
+        spnDrinksQty.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQtyStateChanged(evt);
+            }
+        });
+
         cboChickenSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "Small Bucket", "Medium Bucket", "Large Bucket" }));
+        cboChickenSize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboChickenSizeActionPerformed(evt);
+            }
+        });
 
         cboPastaSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "Solo", "Pan" }));
+        cboPastaSize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboPastaSizeActionPerformed(evt);
+            }
+        });
 
         cboPasta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Pasta", "Spaghetti", "Carbonara" }));
         cboPasta.setPreferredSize(new java.awt.Dimension(58, 25));
@@ -524,6 +563,11 @@ public class POS extends javax.swing.JFrame {
         cboDrinks.setPreferredSize(new java.awt.Dimension(58, 25));
 
         cboDrinksSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Size", "16 Oz", "1.5 Liter" }));
+        cboDrinksSize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDrinksSizeActionPerformed(evt);
+            }
+        });
 
         cboChicken.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Chicken", "Original", "Spicy" }));
         cboChicken.setPreferredSize(new java.awt.Dimension(58, 25));
@@ -668,10 +712,6 @@ public class POS extends javax.swing.JFrame {
         jPanel4.setBounds(0, 100, 980, 500);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-    
     private Purchase purchase = new Purchase(1); // TODO: Find a better way to handle this
     DecimalFormat formatter = new DecimalFormat("#.00");
     
@@ -763,6 +803,51 @@ public class POS extends javax.swing.JFrame {
         txaReceipt.setText(txaReceipt.getText()+ "                         Enjoy your Meal!" );
     }//GEN-LAST:event_btnPrintReceiptActionPerformed
 
+    private void calculateSubtotalColumn() {
+        String pizzaSize = (String)cboPizzaSize.getSelectedItem();
+        int pizzaQty = (int)spnPizzaQty.getValue();
+        String chickenSize = (String)cboChickenSize.getSelectedItem();
+        int chickenQty = (int)spnChickenQty.getValue();
+        String pastaSize = (String)cboPastaSize.getSelectedItem();
+        int pastaQty = (int)spnPastaQty.getValue();
+        String drinkSize = (String)cboDrinksSize.getSelectedItem();
+        int drinkQty = (int)spnDrinksQty.getValue();
+        Menu tempPizza = new Pizza(pizzaSize, "Pepperoni"); // It's fine to leave the second parameter have placeholder value,
+                                                            // because this object is only for computing, not storing
+        Menu tempChicken = new Chicken(chickenSize, "Original");
+        Menu tempPasta = new Pasta(pastaSize, "Spaghetti");
+        Menu tempDrink = new Beverage(drinkSize, "Coke");
+
+        // Set Pizza amount
+        lblPizzaamt.setText(formatter.format(tempPizza.getPrice()*pizzaQty));
+        // Set Chicken amount
+        lblChickenamt.setText(formatter.format(tempChicken.getPrice()*chickenQty));
+        // Set Pasta amount
+        lblPastaamt.setText(formatter.format(tempPasta.getPrice()*pastaQty));
+        // Set Drink amount
+        lblDrinksamt.setText(formatter.format(tempDrink.getPrice()*drinkQty));
+    }
+    
+    private void spnQtyStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQtyStateChanged
+        calculateSubtotalColumn();    
+    }//GEN-LAST:event_spnQtyStateChanged
+
+    private void cboPizzaSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPizzaSizeActionPerformed
+        calculateSubtotalColumn();        
+    }//GEN-LAST:event_cboPizzaSizeActionPerformed
+
+    private void cboChickenSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboChickenSizeActionPerformed
+        calculateSubtotalColumn();        
+    }//GEN-LAST:event_cboChickenSizeActionPerformed
+
+    private void cboPastaSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPastaSizeActionPerformed
+        calculateSubtotalColumn();        
+    }//GEN-LAST:event_cboPastaSizeActionPerformed
+
+    private void cboDrinksSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDrinksSizeActionPerformed
+        calculateSubtotalColumn();        
+    }//GEN-LAST:event_cboDrinksSizeActionPerformed
+    
     public static void main(String[] args) {
         System.out.print("Starting PizzaPOS...");
         /* Set the Nimbus look and feel */
