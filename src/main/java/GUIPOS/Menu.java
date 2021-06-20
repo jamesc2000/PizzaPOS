@@ -98,12 +98,12 @@ class Display {
 
     public static void printReceipt(Purchase t_purchase) {
         DecimalFormat formatter = new DecimalFormat("#.00");
-        System.out.println("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("\t\t\t\t                Receipt");
+        //System.out.println("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+       // System.out.println("\t\t\t\t                Receipt");
         t_purchase.listOrders();
-        System.out.println("\t\t\t\t     Amount Paid: " + formatter.format(t_purchase.getAmount()));
-        System.out.println("\t\t\t\t          Change: " + formatter.format(t_purchase.getChange()));
-        System.out.println("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //System.out.println("\t\t\t\t     Amount Paid: " + formatter.format(t_purchase.getAmount()));
+        //System.out.println("\t\t\t\t          Change: " + formatter.format(t_purchase.getChange()));
+        //System.out.println("\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
     public static void paymentSuccess() {
@@ -189,20 +189,26 @@ class Purchase extends Transaction {
     }
     
     public String listOrders() {
-        String line1 = "\n\t\t\t\t\tOrders (" + orderList.size() + ")\n";
-        String line2 = "\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        //String line1 = "\n\t\t\t\t\tOrders (" + orderList.size() + ")\n";
+        //String line2 = "\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~\n";
         String line3 = new String();
         if (orderList.isEmpty()) {
             line3 = "\t\t\t\tThere are no orders yet, add one by pressing [1]\n";
         } else {
             for (int i = 0; i < orderList.size(); i++) {
-                String order = "\t\t\t\t" + orderList.get(i).getName() + " - " + orderList.get(i).getPrice() + "\n";
+                String order = "\n" + orderList.get(i).getName() + "     " + orderList.get(i).getPrice() + "\n";
                 line3 += order;    
             }
         }
-        String line4 = "\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        //String line4 = "\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        //return line1 + line2 + line3 + line4;
+        return line3;
+    }
+    
+      public String printBill() {
+        DecimalFormat formatter = new DecimalFormat("#.00");
+        return( "  "+ formatter.format(getTotal()) +"        "+ formatter.format(getVAT())+"       "+ formatter.format(getAmount()) +"       "+formatter.format(getChange())+"\n\n");
 
-        return line1 + line2 + line3 + line4;
     }
     
     public double getSubtotal() {
@@ -367,7 +373,7 @@ class Pizza extends Menu{
         if (null != t_flavor) {
             this.flavor = t_flavor;
         }
-        this.name = this.flavor + " " + this.size;
+        this.name = this.flavor + "   " + this.size;
     }
 }
 
@@ -397,7 +403,7 @@ class Pasta extends Menu{
         if (null != t_typeofPasta) {
             this.typeofPasta = t_typeofPasta;
         }
-        this.name = this.serving + " " + this.typeofPasta;
+        this.name = this.serving + "   " + this.typeofPasta;
     } 
 }
 
@@ -427,7 +433,7 @@ class Beverage extends Menu{
         if (null != t_drink) {
             this.drink = t_drink;
         }
-        this.name = this.size + " " + this.drink;
+        this.name = this.size + "   " + this.drink;
     } 
 }
 
@@ -461,6 +467,6 @@ class Chicken extends Menu {
         
         this.flavor = t_flavor;
         
-        this.name = this.flavor + " " + this.size + " Chicken";
+        this.name = this.flavor + " ckn" + "   " + this.size;
     }
 }
