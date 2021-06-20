@@ -122,6 +122,7 @@ public class POS extends javax.swing.JFrame {
         cboDrinksSize = new javax.swing.JComboBox<>();
         cboChicken = new javax.swing.JComboBox<>();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(977, 620));
@@ -409,7 +410,7 @@ public class POS extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(660, 155, 287, 380);
+        jPanel2.setBounds(660, 155, 279, 380);
 
         jPanel4.setBackground(new java.awt.Color(243, 198, 129));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
