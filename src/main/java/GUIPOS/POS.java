@@ -24,6 +24,7 @@ import javax.swing.Timer;
 
 // Import Menu.java to reuse old classes from prev. lab experiment
 import GUIPOS.Menu;
+import java.text.DecimalFormat;
 
 public class POS extends javax.swing.JFrame {
 
@@ -671,6 +672,28 @@ public class POS extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
     
     private Purchase purchase = new Purchase(1); // TODO: Find a better way to handle this
+    DecimalFormat formatter = new DecimalFormat("#.00");
+    
+    private String formatSubtotal() {
+        String subtotal = formatter.format(purchase.getSubtotal());
+        return subtotal;
+    }
+    
+    private String formatVat() {
+        String vat = formatter.format(purchase.getVAT());
+        return vat;
+    }
+
+    private String formatTotal() {
+        String total = formatter.format(purchase.getTotal());
+        return total;
+    }
+    
+    private void outputSubVatTotal() {
+        lblsubtotal.setText(formatSubtotal());
+        lblvat.setText(formatVat());
+        lbltotal.setText(formatTotal());
+    }
     
     private void btnPizzaAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPizzaAOActionPerformed
         String flavor = (String)cboPizza.getSelectedItem();
@@ -681,7 +704,8 @@ public class POS extends javax.swing.JFrame {
         for (int i = 0; i < qty; i++) {
             purchase.addOrder(pizzaOrder);
         }
-        purchase.listOrders();
+        purchase.listOrders(); // Lists on terminal, for debugging only
+        outputSubVatTotal();
     }//GEN-LAST:event_btnPizzaAOActionPerformed
 
     private void btnChickenAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChickenAOActionPerformed
@@ -694,6 +718,7 @@ public class POS extends javax.swing.JFrame {
             purchase.addOrder(chickenOrder);
         }
         purchase.listOrders();
+        outputSubVatTotal();
     }//GEN-LAST:event_btnChickenAOActionPerformed
 
     private void btnPastaAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPastaAOActionPerformed
@@ -706,6 +731,7 @@ public class POS extends javax.swing.JFrame {
             purchase.addOrder(pastaOrder);
         }
         purchase.listOrders();
+        outputSubVatTotal();
     }//GEN-LAST:event_btnPastaAOActionPerformed
 
     private void btnDrinksAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrinksAOActionPerformed
@@ -718,10 +744,10 @@ public class POS extends javax.swing.JFrame {
             purchase.addOrder(drinkOrder);
         }
         purchase.listOrders();
+        outputSubVatTotal();
     }//GEN-LAST:event_btnDrinksAOActionPerformed
 
     private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
-        // TODO add your handling code here:
         txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZERRIA\n");
         txaReceipt.setText(txaReceipt.getText()+ "               General Luna corner Muralla St.,\n");
         txaReceipt.setText(txaReceipt.getText()+ "                        Intamuros, Manila\n");
