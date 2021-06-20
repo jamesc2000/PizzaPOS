@@ -188,20 +188,21 @@ class Purchase extends Transaction {
         this.orderList.add(t_item);
     }
     
-    public void listOrders() {
-        System.out.println("\n\t\t\t\t\tOrders (" + orderList.size() + ")");
-        System.out.println("\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~");
+    public String listOrders() {
+        String line1 = "\n\t\t\t\t\tOrders (" + orderList.size() + ")\n";
+        String line2 = "\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        String line3 = new String();
         if (orderList.isEmpty()) {
-            System.out.println("\t\t\t\tThere are no orders yet, add one by pressing [1]");
+            line3 = "\t\t\t\tThere are no orders yet, add one by pressing [1]\n";
         } else {
             for (int i = 0; i < orderList.size(); i++) {
-                System.out.println("\t\t\t\t" + orderList.get(i).getName() + " - " + orderList.get(i).getPrice());
+                String order = "\t\t\t\t" + orderList.get(i).getName() + " - " + orderList.get(i).getPrice() + "\n";
+                line3 += order;    
             }
         }
-        System.out.println("\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("\t\t\t\t        Subtotal: " + formatter.format(getSubtotal()));
-        System.out.println("\t\t\t\t             VAT: " + formatter.format(getVAT()));
-        System.out.println("\t\t\t\t           Total: " + formatter.format(getTotal()));
+        String line4 = "\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+
+        return line1 + line2 + line3 + line4;
     }
     
     public double getSubtotal() {
