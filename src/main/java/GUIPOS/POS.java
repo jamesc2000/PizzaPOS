@@ -805,19 +805,19 @@ public class POS extends javax.swing.JFrame {
         if (status.equals("Success")) {
             lblchange.setText(formatter.format(purchase.getChange()));
             
-            txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZERRIA\n");
-            txaReceipt.setText(txaReceipt.getText()+ "               General Luna corner Muralla St.,\n");
-            txaReceipt.setText(txaReceipt.getText()+ "                        Intamuros, Manila\n");
-            txaReceipt.setText(txaReceipt.getText()+ "                          (+63 2) 8 7000\n\n");
-            txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
-            txaReceipt.setText(txaReceipt.getText()+ "    Product" + "           Size" + "                          Amount\n\n" );
+            txaReceipt.setText(txaReceipt.getText()+ "                         PLM PIZERRIA\n");
+            txaReceipt.setText(txaReceipt.getText()+ "              General Luna corner Muralla St.,\n");
+            txaReceipt.setText(txaReceipt.getText()+ "                       Intamuros, Manila\n");
+            txaReceipt.setText(txaReceipt.getText()+ "                         (+63 2) 8 7000\n\n");
+            txaReceipt.setText(txaReceipt.getText()+ "****************************************************" + "\n");
+            txaReceipt.setText(txaReceipt.getText()+ "  Product" + "           Size" + "                          Amount\n\n" );
             txaReceipt.setText(txaReceipt.getText()+ purchase.listOrders());
-            txaReceipt.setText(txaReceipt.getText()+ "*****************************************************" + "\n");
-            txaReceipt.setText(txaReceipt.getText()+ "    Total" + "           VAT" + "           Cash" + "           Change\n" );
+            txaReceipt.setText(txaReceipt.getText()+ "****************************************************" + "\n");
+            txaReceipt.setText(txaReceipt.getText()+ "   Total" + "           VAT" + "           Cash" + "           Change\n" );
             txaReceipt.setText(txaReceipt.getText()+ purchase.printBill());
-            txaReceipt.setText(txaReceipt.getText()+ "                      Thank you for Visiting\n" );
-            txaReceipt.setText(txaReceipt.getText()+ "                          PLM PIZZERIA\n" );
-            txaReceipt.setText(txaReceipt.getText()+ "                         Enjoy your Meal!" );
+            txaReceipt.setText(txaReceipt.getText()+ "                     Thank you for Visiting\n" );
+            txaReceipt.setText(txaReceipt.getText()+ "                         PLM PIZZERIA\n" );
+            txaReceipt.setText(txaReceipt.getText()+ "                        Enjoy your Meal!" );
         } else {
             lblStatus.setText(status);
         }
