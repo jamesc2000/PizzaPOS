@@ -361,8 +361,6 @@ class Pizza extends Menu{
                 this.setPrice(799);
                 this.size = "Party";
                 break;
-            default:
-                System.out.println("Invalid option.");
             }
         }
         if (null != t_flavor) {
@@ -385,16 +383,14 @@ class Pasta extends Menu{
     public Pasta (String t_serving, String t_typeofPasta){
         if (null != t_serving) {
             switch (t_serving) {
-              case "Solo": //solo
+                case "Solo": //solo
                     this.price = 99;
                     this.serving = "Solo";
                     break;
-              case "Pan": //pan
+                case "Pan": //pan
                     this.price = 249;
                     this.serving = "Pan";
                     break;
-                default:
-                    System.out.println("Invalid option.");
             }
         }
         if (null != t_typeofPasta) {
@@ -425,8 +421,6 @@ class Beverage extends Menu{
                     this.size = "1.5 Liter";
                     this.price = 99;
                     break;
-                default:
-                    System.out.println("Invalid option.");
             }
         }
         if (null != t_drink) {
@@ -461,8 +455,6 @@ class Chicken extends Menu {
                 this.size = "Large Bucket";
                 this.price = 799;
                 break;
-            default:
-                System.out.println("Invalid option.");
             }
         }
         
