@@ -483,7 +483,7 @@ public class POS extends javax.swing.JFrame {
         btnPrintReceipt.setBackground(new java.awt.Color(182, 21, 5));
         btnPrintReceipt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnPrintReceipt.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrintReceipt.setText("PRINT RECEIPT");
+        btnPrintReceipt.setText("PAY and PRINT RECEIPT");
         btnPrintReceipt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintReceiptActionPerformed(evt);
@@ -753,13 +753,15 @@ public class POS extends javax.swing.JFrame {
         String flavor = (String)cboPizza.getSelectedItem();
         String size = (String)cboPizzaSize.getSelectedItem();
         int qty = (int)spnPizzaQty.getValue();
-
-        Pizza pizzaOrder = new Pizza(size, flavor);
-        for (int i = 0; i < qty; i++) {
-            purchase.addOrder(pizzaOrder);
+        
+        // Input validation, dont output subtotal below if invalid selection
+        if (!(flavor.equals("Select Pizza") || (size.equals("Select Size")))) {
+            Pizza pizzaOrder = new Pizza(size, flavor);
+            for (int i = 0; i < qty; i++) {
+                purchase.addOrder(pizzaOrder);
+            }
+            outputSubVatTotal();
         }
-        purchase.listOrders(); // Lists on terminal, for debugging only
-        outputSubVatTotal();
     }//GEN-LAST:event_btnPizzaAOActionPerformed
 
     private void btnChickenAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChickenAOActionPerformed
@@ -767,12 +769,13 @@ public class POS extends javax.swing.JFrame {
         String size = (String)cboChickenSize.getSelectedItem();
         int qty = (int)spnChickenQty.getValue();
 
-        Chicken chickenOrder = new Chicken(size, flavor);
-        for (int i = 0; i < qty; i++) {
-            purchase.addOrder(chickenOrder);
+        if (!(flavor.equals("Select Chicken") || (size.equals("Select Size")))) {
+            Chicken chickenOrder = new Chicken(size, flavor);
+            for (int i = 0; i < qty; i++) {
+                purchase.addOrder(chickenOrder);
+            }
+            outputSubVatTotal();
         }
-        purchase.listOrders();
-        outputSubVatTotal();
     }//GEN-LAST:event_btnChickenAOActionPerformed
 
     private void btnPastaAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPastaAOActionPerformed
@@ -780,12 +783,13 @@ public class POS extends javax.swing.JFrame {
         String serving = (String)cboPastaSize.getSelectedItem();
         int qty = (int)spnPastaQty.getValue();
 
-        Pasta pastaOrder = new Pasta(serving, typeofPasta);
-        for (int i = 0; i < qty; i++) {
-            purchase.addOrder(pastaOrder);
+        if (!(typeofPasta.equals("Select Pasta") || (serving.equals("Select Size")))) {
+            Pasta pastaOrder = new Pasta(serving, typeofPasta);
+            for (int i = 0; i < qty; i++) {
+                purchase.addOrder(pastaOrder);
+            }
+            outputSubVatTotal();
         }
-        purchase.listOrders();
-        outputSubVatTotal();
     }//GEN-LAST:event_btnPastaAOActionPerformed
 
     private void btnDrinksAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrinksAOActionPerformed
@@ -793,12 +797,13 @@ public class POS extends javax.swing.JFrame {
         String size = (String)cboDrinksSize.getSelectedItem();
         int qty = (int)spnDrinksQty.getValue();
 
-        Beverage drinkOrder = new Beverage(size, drink);
-        for (int i = 0; i < qty; i++) {
-            purchase.addOrder(drinkOrder);
+        if (!(drink.equals("Select Drink") || (size.equals("Select Size")))) {
+            Beverage drinkOrder = new Beverage(size, drink);
+            for (int i = 0; i < qty; i++) {
+                purchase.addOrder(drinkOrder);
+            }
+            outputSubVatTotal();
         }
-        purchase.listOrders();
-        outputSubVatTotal();
     }//GEN-LAST:event_btnDrinksAOActionPerformed
 
     private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
@@ -829,6 +834,11 @@ public class POS extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrintReceiptActionPerformed
 
     private void calculateSubtotalColumn() {
+        String pizzaFlavor = (String)cboPizza.getSelectedItem();
+        String pastaFlavor = (String)cboPasta.getSelectedItem();
+        String chickenFlavor = (String)cboChicken.getSelectedItem();
+        String drinkFlavor = (String)cboDrinks.getSelectedItem();
+        
         String pizzaSize = (String)cboPizzaSize.getSelectedItem();
         int pizzaQty = (int)spnPizzaQty.getValue();
         String chickenSize = (String)cboChickenSize.getSelectedItem();
@@ -844,13 +854,21 @@ public class POS extends javax.swing.JFrame {
         Menu tempDrink = new Beverage(drinkSize, "Coke");
 
         // Set Pizza amount
-        lblPizzaamt.setText(formatter.format(tempPizza.getPrice()*pizzaQty));
+        if (!(pizzaFlavor.equals("Select Pizza") || pizzaSize.equals("Select Size"))) {
+            lblPizzaamt.setText(formatter.format(tempPizza.getPrice()*pizzaQty));
+        }
         // Set Chicken amount
-        lblChickenamt.setText(formatter.format(tempChicken.getPrice()*chickenQty));
+        if (!(chickenFlavor.equals("Select Chicken") || chickenSize.equals("Select Size"))) {
+            lblChickenamt.setText(formatter.format(tempChicken.getPrice()*chickenQty));
+        }
         // Set Pasta amount
-        lblPastaamt.setText(formatter.format(tempPasta.getPrice()*pastaQty));
+        if (!(pastaFlavor.equals("Select Pasta") || pastaSize.equals("Select Size"))) {
+            lblPastaamt.setText(formatter.format(tempPasta.getPrice()*pastaQty));
+        }
         // Set Drink amount
-        lblDrinksamt.setText(formatter.format(tempDrink.getPrice()*drinkQty));
+        if (!(drinkFlavor.equals("Select Drinks") || pizzaSize.equals("Select Size"))) {
+            lblDrinksamt.setText(formatter.format(tempDrink.getPrice()*drinkQty));
+        }
     }
     
     private void spnQtyStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQtyStateChanged
