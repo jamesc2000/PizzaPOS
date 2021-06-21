@@ -130,12 +130,14 @@ class Purchase extends Transaction {
     }
     
     public String pay(Payment t_payment) {
-        if (t_payment.getAmount() >= subtotal * (1 + VAT) && t_payment.isValid()) {
+        // Rounded off total to two decimal places
+        double total = Math.round((subtotal * (1+VAT) * 100.00)) / 100.00;
+        if (t_payment.getAmount() >= total && t_payment.isValid()) {
         // Pag tama amount ng pera nung bumili, ibig sabihin proceed, else return an error code
             this.amountPaid = t_payment.getAmount();
-            this.amountChange = t_payment.getAmount() - subtotal * (1 + VAT);
+            this.amountChange = t_payment.getAmount() - total;
             return "Success";
-        } else if (t_payment.getAmount() < subtotal * (1 + VAT)) {
+        } else if (t_payment.getAmount() < total) {
             return "Insufficient payment";
         } else if (!t_payment.isValid()) {
             return "Invalid payment details";
