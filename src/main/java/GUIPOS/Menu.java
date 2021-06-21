@@ -193,10 +193,10 @@ class Purchase extends Transaction {
         //String line2 = "\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~\n";
         String line3 = new String();
         if (orderList.isEmpty()) {
-            line3 = "\t\t\t\tThere are no orders yet, add one by pressing [1]\n";
+            line3 = "There are no orders yet, add one by pressing [1]\n";
         } else {
             for (int i = 0; i < orderList.size(); i++) {
-                String order = "\n" + orderList.get(i).getName() + "     " + orderList.get(i).getPrice() + "\n";
+                String order =  orderList.get(i).getName() + "\t    " + orderList.get(i).getPrice() + "\n";
                 line3 += order;    
             }
         }
@@ -205,9 +205,9 @@ class Purchase extends Transaction {
         return line3;
     }
     
-      public String printBill() {
+    public String printBill() {
         DecimalFormat formatter = new DecimalFormat("#.00");
-        return( "  "+ formatter.format(getTotal()) +"        "+ formatter.format(getVAT())+"       "+ formatter.format(getAmount()) +"       "+formatter.format(getChange())+"\n\n");
+        return( "\n                    Total\t"+ formatter.format(getTotal()) +"\n                    VAT\t"+ formatter.format(getVAT())+"\n                    Cash\t"+ formatter.format(getAmount()) +"\n                    Change\t"+formatter.format(getChange())+"\n\n");
 
     }
     
@@ -373,7 +373,7 @@ class Pizza extends Menu{
         if (null != t_flavor) {
             this.flavor = t_flavor;
         }
-        this.name = this.flavor + "   " + this.size;
+        this.name = "  " + this.flavor + "\t" + this.size;
     }
 }
 
@@ -403,7 +403,7 @@ class Pasta extends Menu{
         if (null != t_typeofPasta) {
             this.typeofPasta = t_typeofPasta;
         }
-        this.name = this.serving + "   " + this.typeofPasta;
+        this.name = "  " + this.serving + "\t" + this.typeofPasta;
     } 
 }
 
@@ -433,7 +433,7 @@ class Beverage extends Menu{
         if (null != t_drink) {
             this.drink = t_drink;
         }
-        this.name = this.size + "   " + this.drink;
+        this.name = "  " +this.drink + "\t" + this.size;
     } 
 }
 
@@ -467,6 +467,6 @@ class Chicken extends Menu {
         
         this.flavor = t_flavor;
         
-        this.name = this.flavor + " ckn" + "   " + this.size;
+        this.name = "  " +this.flavor + " ckn" + "\t" + this.size;
     }
 }
