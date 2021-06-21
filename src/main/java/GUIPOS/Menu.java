@@ -154,7 +154,7 @@ class Display {
 abstract class Transaction {
     // ENCAPSULATION: transactionNumber is a private variable, it only has a
     // getter and no setter, therefore is non-editable after construction.
-    private int transactionNumber;        
+    protected int transactionNumber;        
 
     public Transaction(int t_transactionNumber) {
         super();
@@ -164,6 +164,7 @@ abstract class Transaction {
     public int getNumber() {
         return transactionNumber;
     }
+
 }
 
 // INHERITANCE: Transaction is the superclass, Purchase is the subclass
@@ -248,6 +249,12 @@ class Purchase extends Transaction {
         } else {
             return "Unknown Error";
         }
+    }
+    public void newTransaction() {
+        // Just a hack, does not really make new transaction object, but increments
+        // the transaction number
+        transactionNumber++;
+        orderList.clear();
     }
 }
 

@@ -518,6 +518,11 @@ public class POS extends javax.swing.JFrame {
         btnNewOrder.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNewOrder.setForeground(new java.awt.Color(255, 255, 255));
         btnNewOrder.setText("NEW ORDER");
+        btnNewOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewOrderActionPerformed(evt);
+            }
+        });
 
         spnPizzaQty.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -648,7 +653,7 @@ public class POS extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblchange, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                            .addComponent(lblchange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(358, 358, 358))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -809,6 +814,7 @@ public class POS extends javax.swing.JFrame {
             txaReceipt.setText(txaReceipt.getText()+ "               General Luna corner Muralla St.,\n");
             txaReceipt.setText(txaReceipt.getText()+ "                        Intamuros, Manila\n");
             txaReceipt.setText(txaReceipt.getText()+ "                          (+63 2) 8 7000\n\n");
+            txaReceipt.setText(txaReceipt.getText()+ "Order# " + purchase.getNumber() + "\n");
             txaReceipt.setText(txaReceipt.getText()+ "************************************************" + "\n");
             txaReceipt.setText(txaReceipt.getText()+ "    Product" + "           Size" + "\t  Amount\n\n" );
             txaReceipt.setText(txaReceipt.getText()+ purchase.listOrders());
@@ -866,6 +872,13 @@ public class POS extends javax.swing.JFrame {
     private void cboDrinksSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDrinksSizeActionPerformed
         calculateSubtotalColumn();        
     }//GEN-LAST:event_cboDrinksSizeActionPerformed
+
+    private void btnNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewOrderActionPerformed
+        purchase.newTransaction();
+        outputSubVatTotal();
+        txaReceipt.setText("");
+        lblchange.setText("00.00");
+    }//GEN-LAST:event_btnNewOrderActionPerformed
     
     public static void main(String[] args) {
         System.out.print("Starting PizzaPOS...");

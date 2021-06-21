@@ -1142,6 +1142,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="NEW ORDER"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewOrderActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnPizzaQty">
           <Events>
