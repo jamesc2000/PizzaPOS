@@ -10,6 +10,10 @@ Paz, Kristel Erica D.
 Sacayanan, Christian John P.
 
 BS CpE 2-3 - Software Design
+
+Java versions used during development
+Java: 16; Java HotSpot(TM) 64-Bit Server VM 16+36-2231
+Runtime: Java(TM) SE Runtime Environment 16+36-2231
  */
 package GUIPOS;
 
