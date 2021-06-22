@@ -175,7 +175,7 @@
         <Component class="javax.swing.JLabel" name="lblLogo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\James\Files\2nd Year\Software Design\Worksheets\NetBeans Projects\PizzaPOS\assets\logo-text.png"/>
+              <Image iconType="3" name="/GUIPOS/logo-text.png"/>
             </Property>
             <Property name="debugGraphicsOptions" type="int" value="4"/>
           </Properties>
