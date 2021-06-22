@@ -192,7 +192,7 @@ public class POS extends javax.swing.JFrame {
                 .addGap(63, 63, 63))
         );
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUIPOS/logo-text.png"))); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
         lblLogo.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
